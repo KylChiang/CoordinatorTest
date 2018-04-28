@@ -14,7 +14,13 @@ class ViewController: UIViewController, Storyboarded {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
+        
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        
+        self.configNavigator()
     }
 
     override func didReceiveMemoryWarning() {
@@ -31,5 +37,18 @@ class ViewController: UIViewController, Storyboarded {
         coordinator?.createAccount()
     }
 
+    // MARK: UI appearance configure
+    func configNavigator() {
+        let nav = self.navigationController?.navigationBar
+
+        nav?.titleTextAttributes = [
+            NSAttributedStringKey.foregroundColor: UIColor.white,
+            NSAttributedStringKey.font: UIFont.boldSystemFont(ofSize: 17)
+        ]
+        
+        nav?.isTranslucent = false
+        nav?.barTintColor = UIColor.blue
+        nav?.topItem?.title = "Coordinator Test"
+    }
 }
 
